@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f2f2f2;
+}
+.container{
+    width:80%;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+h1{
+    text-align:center;
+}
+input{
+    width:30%;
+    padding:10px;
+    margin:5px;
+}
+button{
+    padding:10px 20px;
+    background:green;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+button:hover{
+    background:darkgreen;
+}
+table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+table,th,td{
+    border:1px solid black;
+}
+th,td{
+    padding:10px;
+    text-align:center;
+}
+.delete-btn{
+    background:red;
+}
+.delete-btn:hover{
+    background:darkred;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<h1 STYLE="color: RED;">IIT STUDENT MANAGMENT</h1>
+
+<input type="text" id="name" placeholder="Student Name">
+<input type="text" id="roll" placeholder="Roll Number">
+<input type="text" id="course" placeholder="Course">
+
+<button onclick="addStudent()">Add Student</button>
+
+<table>
+<thead>
+<tr>
+<th style="color:rgb(255, 127, 144)">Name</th>
+<th style="color:red">Roll No</th>
+<th style="color: blue;">Course</th>
+<th style="color: darkorchid;">Action</th>
+</tr>
+</thead>
+
+<tbody id="studentList"></tbody>
+</table>
+
+</div>
+
+<script>
+function addStudent(){
+
+let name=document.getElementById("name").value;
+let roll=document.getElementById("roll").value;
+let course=document.getElementById("course").value;
+
+if(name=="" || roll=="" || course==""){
+alert("Please fill all fields");
+return;
+}
+
+let table=document.getElementById("studentList");
+let row=table.insertRow();
+
+row.insertCell(0).innerHTML=name;
+row.insertCell(1).innerHTML=roll;
+row.insertCell(2).innerHTML=course;
+row.insertCell(3).innerHTML="<button class='delete-btn' onclick='deleteRow(this)'>Delete</button>";
+
+document.getElementById("name").value="";
+document.getElementById("roll").value="";
+document.getElementById("course").value="";
+}
+
+function deleteRow(btn){
+btn.parentNode.parentNode.remove();
+}
+</script>
+
+</body>
+</html>
